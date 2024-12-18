@@ -15,7 +15,7 @@ struct Function: Shape {
     var scaleX: Double = 1
     var scaleY: Double = 10
     
-    init(function: @escaping (_: Double) -> Double, scaleX: Double, scaleY: Double) {
+    init(function: @escaping (_ x: Double) -> Double, scaleX: Double, scaleY: Double) {
         self.function = function
         self.scaleX = scaleX
         self.scaleY = scaleY
