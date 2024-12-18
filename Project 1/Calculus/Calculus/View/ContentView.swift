@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var selectedFunctions: [Int] = [] // Índices das funções selecionadas
-    @State private var selectedOperations: [String] = [] // Operações escolhidas
+    @State private var selectedFunctions: [Int] = []
+    @State private var selectedOperations: [String] = []
     @State private var scaleX: Double = 10
     @State private var scaleY: Double = 10
 
@@ -34,7 +34,6 @@ struct ContentView: View {
                 Mesh()
                     .stroke(Color.primary, lineWidth: 1)
                 
-                // Renderiza a função composta
                 Function(function: { x in
                     self.composeFunction(x: x)
                 }, scaleX: scaleX, scaleY: scaleY)
@@ -43,7 +42,6 @@ struct ContentView: View {
             .border(Color.black)
             .padding()
 
-            // Teclado de funções e operações
             VStack(spacing: 10) {
                 HStack {
                     ForEach(0..<functions.count, id: \.self) { index in
@@ -74,7 +72,6 @@ struct ContentView: View {
             }
             .padding()
 
-            // Mostra as funções e operações selecionadas
             ScrollView(.horizontal) {
                 HStack {
                     ForEach(0..<selectedFunctions.count, id: \.self) { index in
@@ -94,7 +91,6 @@ struct ContentView: View {
             .padding()
             .border(Color.gray)
 
-            // Sliders para controle de escala
             HStack {
                 Text("ScaleX: \(Int(scaleX))")
                 Slider(value: $scaleX, in: 1...200, step: 1)
@@ -111,7 +107,6 @@ struct ContentView: View {
         .padding()
     }
 
-    // Função composta baseada nas seleções do usuário
     func composeFunction(x: Double) -> Double {
         guard !selectedFunctions.isEmpty else { return 0 }
 
@@ -126,7 +121,7 @@ struct ContentView: View {
                 case "+": result += function(x)
                 case "-": result -= function(x)
                 case "*": result *= function(x)
-                case "/": result = function(x) != 0 ? result / function(x) : result 
+                case "/": result = function(x) != 0 ? result / function(x) : result
                 default: break
                 }
             }
