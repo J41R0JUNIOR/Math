@@ -11,6 +11,7 @@ import SwiftUI
 
 struct Function: Shape {
     var function: (_ x: Double) -> (Double)
+    
     var scaleX: Double = 1
     var scaleY: Double = 10
     
@@ -27,10 +28,12 @@ struct Function: Shape {
             
             let y = -function(normalize(x: x - rect.maxX/2, rect: rect) / scaleX) * scaleY  + rect.height/2
             
-            if path.isEmpty {
-                path.move(to: CGPoint(x: x, y: y))
+            if y > rect.minY/2 && y < rect.maxY{
+                if path.isEmpty {
+                    path.move(to: CGPoint(x: x, y: y))
+                }
+                path.addLine(to: CGPoint(x: x, y: y))
             }
-            path.addLine(to: CGPoint(x: x, y: y))
         }
         
         return path
