@@ -7,11 +7,11 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var selectedFunctions: [(String, (Double) -> Double)] = [] // Tupla com nome e função
-    @State private var selectedOperations: [String] = []
-    @State private var scaleX: Double = 10
-    @State private var scaleY: Double = 10
-    @State private var showScale: Bool = false
+    @State  var selectedFunctions: [(String, (Double) -> Double)] = []
+    @State  var selectedOperations: [String] = []
+    @State  var scaleX: Double = 10
+    @State  var scaleY: Double = 10
+    @State  var showScale: Bool = false
     
     @State var selectedOperation = 1
     
@@ -115,16 +115,15 @@ struct ContentView: View {
                 }
             }
         }
-       
     }
     
     func composeFunction(x: Double) -> Double {
         guard !selectedFunctions.isEmpty else { return 0 }
         
-        var result = selectedFunctions[0].1(x) // Usando a função da tupla
+        var result = selectedFunctions[0].1(x)
         
         for i in 1..<selectedFunctions.count {
-            let function = selectedFunctions[i].1 // Função da tupla
+            let function = selectedFunctions[i].1
             
             if i - 1 < selectedOperations.count {
                 let operation = selectedOperations[i - 1]
