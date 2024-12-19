@@ -65,6 +65,7 @@ struct Graph_C_Functions: View {
                     }
                 }
             }
+            .padding(.horizontal)
             
             HStack {
                 Text("Operations:")
