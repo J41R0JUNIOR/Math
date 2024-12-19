@@ -10,12 +10,11 @@ import SwiftUI
 
 
 struct Function: Shape {
-    var function: (_ x: Double) -> (Double)
-    
+    var function: @Sendable (_ x: Double) -> (Double)
     var scaleX: Double = 1
     var scaleY: Double = 10
     
-    init(function: @escaping (_ x: Double) -> Double, scaleX: Double, scaleY: Double) {
+    init(function: @Sendable @escaping (_ x: Double) -> Double, scaleX: Double, scaleY: Double) {
         self.function = function
         self.scaleX = scaleX
         self.scaleY = scaleY
@@ -24,7 +23,7 @@ struct Function: Shape {
     func path(in rect: CGRect) -> Path {
         var path = Path()
                 
-        for x in stride(from: rect.minX, to: rect.maxX, by: 1) {
+        for x in stride(from: rect.minX, to: rect.maxX, by: 0.1) {
             
             let y = -function(normalize(x: x - rect.maxX/2, rect: rect) / scaleX) * scaleY  + rect.height/2
             

@@ -4,32 +4,31 @@
 //
 //  Created by The Godfather Júnior on 18/12/24.
 //
-
 import SwiftUI
 
 struct ContentView: View {
-    @State private var selectedFunctions: [Int] = []
+    @State private var selectedFunctions: [(String, (Double) -> Double)] = [] // Tupla com nome e função
     @State private var selectedOperations: [String] = []
     @State private var scaleX: Double = 10
     @State private var scaleY: Double = 10
-
-    let functions: [(Double) -> Double] = [
-        { (x: Double) in sin(x) },
-        { (x: Double) in cos(x) },
-        { (x: Double) in tan(x) },
-        { (x: Double) in pow(x, 2) },
-        { (x: Double) in pow(2.74, x) }
+    
+    @State var selectedOperation = 1
+    
+    let functionsByCategory = [
+        1: [("Sen", { (x: Double) in sin(x) }),
+            ("Cos", { (x: Double) in cos(x) }),
+            ("Tan", { (x: Double) in tan(x) })],
+        
+        2: [("Square", { (x: Double) in pow(x, 2) }),
+            ("Expo", { (x: Double) in pow(2.74, x) })],
+        
+        3: [("Log10", { (x: Double) in log10(x) })]
     ]
     
-    let functionNames = ["Seno", "Cosseno", "Tangente", "Quadrado", "Exponencial"]
     let operations = ["+", "-", "*", "/"]
-
+    
     var body: some View {
         VStack {
-            Text("Montar Função")
-                .font(.title)
-                .padding()
-
             ZStack {
                 Mesh()
                     .stroke(Color.primary, lineWidth: 1)
@@ -41,80 +40,82 @@ struct ContentView: View {
             }
             .border(Color.black)
             .padding()
-
-            VStack(spacing: 10) {
-                HStack {
-                    ForEach(0..<functions.count, id: \.self) { index in
-                        Button(action: {
-                            selectedFunctions.append(index)
-                        }) {
-                            Text(functionNames[index])
-                                .padding()
-                                .background(Color.blue.opacity(0.2))
-                                .cornerRadius(8)
-                        }
-                    }
-                }
-
-                HStack {
-                    ForEach(operations, id: \.self) { operation in
-                        Button(action: {
-                            selectedOperations.append(operation)
-                        }) {
-                            Text(operation)
-                                .font(.title2)
-                                .padding()
-                                .background(Color.green.opacity(0.2))
-                                .cornerRadius(8)
-                        }
-                    }
-                }
-            }
-            .padding()
-
+            
             ScrollView(.horizontal) {
                 HStack {
                     ForEach(0..<selectedFunctions.count, id: \.self) { index in
-                        Text(functionNames[selectedFunctions[index]])
-                            .padding()
+                        Text(selectedFunctions[index].0) // Exibindo o nome da função
                             .background(Color.blue.opacity(0.3))
-                            .cornerRadius(8)
-
+                            .cornerRadius(3)
+                        
                         if index < selectedOperations.count {
                             Text(selectedOperations[index])
                                 .font(.title2)
-                                .padding(.horizontal, 5)
                         }
                     }
                 }
             }
             .padding()
             .border(Color.gray)
-
+            
+            Picker("Selecione a operação", selection: $selectedOperation) {
+                Text("Trigonometrics").tag(1)
+                Text("Exponential").tag(2)
+                Text("Logarithmic").tag(3)
+            }
+            .pickerStyle(SegmentedPickerStyle())
+            
+            ScrollView(.horizontal) {
+                HStack(spacing: 10) {
+                    if let functions = functionsByCategory[selectedOperation] {
+                        ForEach(functions.indices, id: \.self) { index in
+                            Button(action: {
+                                selectedFunctions.append(functions[index]) // Adicionando a tupla (nome, função)
+                            }) {
+                                Text(functions[index].0)
+                            }
+                            .buttonStyle(.bordered)
+                        }
+                    }
+                }
+            }
+            
+            HStack {
+                ForEach(operations, id: \.self) { operation in
+                    Button(operation) {
+                        selectedOperations.append(operation)
+                    }
+                }
+            }
+            .buttonStyle(.borderedProminent)
+            .padding()
+            
             HStack {
                 Text("ScaleX: \(Int(scaleX))")
-                Slider(value: $scaleX, in: 1...200, step: 1)
+                Slider(value: $scaleX, in: 0...200, step: 10)
             }
+            
             HStack {
                 Text("ScaleY: \(Int(scaleY))")
-                Slider(value: $scaleY, in: 1...250, step: 1)
+                Slider(value: $scaleY, in: 0...250, step: 10)
             }
-            Button("reset"){
+            
+            Button("reset") {
                 selectedFunctions.removeAll()
                 selectedOperations.removeAll()
             }
         }
         .padding()
     }
-
+    
     func composeFunction(x: Double) -> Double {
         guard !selectedFunctions.isEmpty else { return 0 }
-
-        var result = functions[selectedFunctions[0]](x)
-
+        
+        var result = selectedFunctions[0].1(x) // Usando a função da tupla
+        
         for i in 1..<selectedFunctions.count {
-            let function = functions[selectedFunctions[i]]
-
+            let function = selectedFunctions[i].1 // Função da tupla
+            
             if i - 1 < selectedOperations.count {
                 let operation = selectedOperations[i - 1]
                 switch operation {
@@ -126,7 +127,7 @@ struct ContentView: View {
                 }
             }
         }
-
+        
         return result
     }
 }
