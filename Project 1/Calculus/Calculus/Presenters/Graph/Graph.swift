@@ -20,13 +20,11 @@ struct Graph: View {
             } label: {
                 Image(systemName: vm.m.show ? "chevron.down" : "chevron.up")
             }.padding()
-
             
-            if(vm.m.show){
-                Graph_C_Functions(vm: vm)
-                
-                Graph_C_Settings(vm: vm)
-            }
+            Graph_C_Functions(vm: vm)
+            
+            Graph_C_Settings(vm: vm)
+            
         }
     }
     

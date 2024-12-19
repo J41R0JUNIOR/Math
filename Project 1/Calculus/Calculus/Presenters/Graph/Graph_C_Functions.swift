@@ -25,45 +25,46 @@ struct Graph_C_Functions: View {
                 }
             }
         }
-        
         .border(Color.gray)
         
-        Picker("Selecione a operação", selection: $vm.m.selectedOperation) {
-            Text("Trigonometrics").tag(1)
-            Text("Exponential").tag(2)
-            Text("Linear").tag(3)
-            Text("Logarithmic").tag(4)
-        }
-        .pickerStyle(SegmentedPickerStyle())
-        
-        ScrollView(.horizontal) {
-            HStack(spacing: 10) {
-                if let functions = vm.m.functionsByCategory[vm.m.selectedOperation] {
-                    ForEach(functions.indices, id: \.self) { index in
-                        Button(action: {
-                            vm.m.selectedFunctions.append(functions[index])
-                        }) {
-                            Text(functions[index].0)
+        if vm.m.show{
+            
+            Picker("Selecione a operação", selection: $vm.m.selectedOperation) {
+                Text("Trigonometrics").tag(1)
+                Text("Exponential").tag(2)
+                Text("Linear").tag(3)
+                Text("Logarithmic").tag(4)
+            }
+            .pickerStyle(SegmentedPickerStyle())
+            
+            ScrollView(.horizontal) {
+                HStack(spacing: 10) {
+                    if let functions = vm.m.functionsByCategory[vm.m.selectedOperation] {
+                        ForEach(functions.indices, id: \.self) { index in
+                            Button(action: {
+                                vm.m.selectedFunctions.append(functions[index])
+                            }) {
+                                Text(functions[index].0)
+                            }
+                            .buttonStyle(.borderedProminent)
                         }
-                        .buttonStyle(.borderedProminent)
                     }
                 }
             }
-        }
-        
-        HStack {
-            Text("Operations:")
-            ForEach(vm.m.operations, id: \.self) { operation in
-                Button(operation) {
-                    vm.m.selectedOperations.append(operation)
+            
+            HStack {
+                Text("Operations:")
+                ForEach(vm.m.operations, id: \.self) { operation in
+                    Button(operation) {
+                        vm.m.selectedOperations.append(operation)
+                    }
+                    .buttonStyle(.bordered)
                 }
-                .buttonStyle(.bordered)
             }
+            .padding(.horizontal)
+            //        .background(Color.gray)
+            .cornerRadius(10)
         }
-        .padding(.horizontal)
-//        .background(Color.gray)
-        .cornerRadius(10)
-       
     }
 }
 
