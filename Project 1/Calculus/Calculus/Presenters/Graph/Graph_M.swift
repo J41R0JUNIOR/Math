@@ -12,7 +12,7 @@ import SwiftUICore
 class Graph_M{
     var router = Router.shared
     
-    var selectedFunctions: [(String, (Double) -> Double)] = []
+    var selectedFunctions: [(String, (Double) -> Double)] = .init()
     var selectedOperations: [String] = []
     var scaleX: Double = 10
     var scaleY: Double = 10
