@@ -45,21 +45,25 @@ struct Graph_C_Functions: View {
                         }) {
                             Text(functions[index].0)
                         }
-                        .buttonStyle(.bordered)
+                        .buttonStyle(.borderedProminent)
                     }
                 }
             }
         }
         
         HStack {
+            Text("Operations:")
             ForEach(vm.m.operations, id: \.self) { operation in
                 Button(operation) {
                     vm.m.selectedOperations.append(operation)
                 }
+                .buttonStyle(.bordered)
             }
         }
-        .buttonStyle(.borderedProminent)
-        .padding()
+        .padding(.horizontal)
+//        .background(Color.gray)
+        .cornerRadius(10)
+       
     }
 }
 

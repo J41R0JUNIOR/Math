@@ -19,6 +19,7 @@ class Graph_M{
     var showScale: Bool = false
     var by: Double = 0.1
     var selectedOperation = 1
+    var show = true
     
     let functionsByCategory = [
         1: [

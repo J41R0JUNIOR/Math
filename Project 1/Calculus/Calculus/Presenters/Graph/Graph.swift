@@ -15,9 +15,18 @@ struct Graph: View {
         VStack {
             Graph_C(vm: vm)
             
-            Graph_C_Functions(vm: vm)
+            Button {
+                vm.m.show.toggle()
+            } label: {
+                Image(systemName: vm.m.show ? "chevron.down" : "chevron.up")
+            }.padding()
+
             
-            Graph_C_Settings(vm: vm)
+            if(vm.m.show){
+                Graph_C_Functions(vm: vm)
+                
+                Graph_C_Settings(vm: vm)
+            }
         }
     }
     
