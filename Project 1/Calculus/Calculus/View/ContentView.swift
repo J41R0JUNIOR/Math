@@ -71,7 +71,7 @@ struct ContentView: View {
                     if let functions = functionsByCategory[selectedOperation] {
                         ForEach(functions.indices, id: \.self) { index in
                             Button(action: {
-                                selectedFunctions.append(functions[index]) // Adicionando a tupla (nome, função)
+                                selectedFunctions.append(functions[index]) 
                             }) {
                                 Text(functions[index].0)
                             }
@@ -95,12 +95,12 @@ struct ContentView: View {
             if showScale{
                 HStack {
                     Text("ScaleX: \(Int(scaleX))")
-                    Slider(value: $scaleX, in: 0...200, step: 10)
+                    Slider(value: $scaleX, in: 5...200, step: 5)
                 }
                 
                 HStack {
                     Text("ScaleY: \(Int(scaleY))")
-                    Slider(value: $scaleY, in: 0...250, step: 10)
+                    Slider(value: $scaleY, in: 5...200, step: 5)
                 }
             }
             

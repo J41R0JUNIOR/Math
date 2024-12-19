@@ -23,15 +23,16 @@ struct Function: Shape {
     func path(in rect: CGRect) -> Path {
         var path = Path()
                 
-        for x in stride(from: rect.minX, to: rect.maxX, by: 1) {
+        for x in stride(from: rect.minX, to: rect.maxX, by: 0.1) {
             
             let y = -function(normalize(x: x - rect.maxX/2, rect: rect) / scaleX) * scaleY  + rect.height/2
             
             if y > rect.minY/2 && y < rect.maxY{
-                if path.isEmpty {
+//                if path.isEmpty {
                     path.move(to: CGPoint(x: x, y: y))
-                }
-                path.addLine(to: CGPoint(x: x, y: y))
+                path.addLine(to: CGPoint(x: x - 1, y: y ))
+//                }
+//                path.addLine(to: CGPoint(x: x, y: y))
             }
         }
         
