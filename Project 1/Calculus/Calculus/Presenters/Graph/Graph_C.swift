@@ -26,8 +26,8 @@ struct Graph_C: View {
             .stroke(Color.blue, lineWidth: 2)
             .id(vm.m.selectedFunctions.count + vm.m.selectedOperations.count)
         }
-        .border(Color.black)
-        .padding()
+//        .border(Color.black)
+        
     }
 }
 

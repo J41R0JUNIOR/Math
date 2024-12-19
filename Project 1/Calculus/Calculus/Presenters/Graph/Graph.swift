@@ -23,9 +23,10 @@ struct Graph: View {
             
             
             Graph_C_Functions(vm: vm)
+                .padding()
             
             Graph_C_Settings(vm: vm)
-            
+                .padding()
         }
     }
     
