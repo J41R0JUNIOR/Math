@@ -23,28 +23,31 @@ class Graph_M{
     
     let functionsByCategory = [
         1: [
-            ("Sen", { (x: Double) in sin(x) }),
-            ("Cos", { (x: Double) in cos(x) }),
-            ("Tan", { (x: Double) in tan(x) }),
-            ("Cot", { (x: Double) in 1 / tan(x) }),
-            ("Coss", { (x: Double) in 1 / sin(x)}),
-            ("Sec", { (x: Double) in 1 / cos(x)})
-            
-        ],
-        
-        3: [
-            ("x", { (x: Double) in x}),
-            ("2x", { (x: Double) in 2 * x})
+            ("sin(x)", sin),
+            ("cos(x)", cos),
+            ("tan(x)", tan),
+            ("cot(x)", { 1 / tan($0) }),
+            ("csc(x)", { 1 / sin($0) }),
+            ("sec(x)", { 1 / cos($0) })
         ],
         
         2: [
-            ("xˆ2", { (x: Double) in pow(x, 2) }),
-            ("e^x", { (x: Double) in pow(2.74, x) }),
-            ("xˆx", { (x: Double) in pow(x, x)})
+            ("x²", { (x: Double) in pow(x, 2) }),
+            ("eˣ", { (x: Double) in pow(2.74, x) }),
+            ("xˣ", { (x: Double) in pow(x, x) }),
+//            ("x²", { pow($0, 2) }),
+//            ("eˣ", { pow(M_E, $0) }),
+//            ("xˣ", { pow($0, $0) }),
+        ],
+        
+        3: [
+            ("x", { (x: Double) in x }),
+            ("2x", { (x: Double) in 2 * x })
         ],
         
         4: [
-            ("Log10", { (x: Double) in log10(x) })
+            ("Log10 x", log10),
+            ("Ln x", log)
         ]
     ]
     

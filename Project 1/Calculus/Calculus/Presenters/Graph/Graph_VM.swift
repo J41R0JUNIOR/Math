@@ -33,4 +33,19 @@ class Graph_VM {
         
         return result
     }
+    
+//    func composeFunction(x: Double) -> Double {
+//        guard !m.selectedFunctions.isEmpty else { return 0 }
+//        
+//        // Inicializa o valor com a entrada x
+//        var result = x
+//        
+//        // Aplica cada função na ordem
+//        for function in m.selectedFunctions {
+//            result = function.1(result)
+//        }
+//        
+//        return result
+//    }
+
 }

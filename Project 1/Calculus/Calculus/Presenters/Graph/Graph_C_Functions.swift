@@ -30,10 +30,10 @@ struct Graph_C_Functions: View {
         if vm.m.show{
             
             Picker("Selecione a operação", selection: $vm.m.selectedOperation) {
-                Text("Trigonometrics").tag(1)
-                Text("Exponential").tag(2)
-                Text("Linear").tag(3)
-                Text("Logarithmic").tag(4)
+                Image(systemName: "circle").tag(1)
+                Text("ˆ").tag(2)
+                Text("/").tag(3)
+                Text("Log").tag(4)
             }
             .pickerStyle(SegmentedPickerStyle())
             
@@ -62,7 +62,6 @@ struct Graph_C_Functions: View {
                 }
             }
             .padding(.horizontal)
-            //        .background(Color.gray)
             .cornerRadius(10)
         }
     }
