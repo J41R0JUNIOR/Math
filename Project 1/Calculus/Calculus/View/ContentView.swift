@@ -11,6 +11,7 @@ struct ContentView: View {
     @State private var selectedOperations: [String] = []
     @State private var scaleX: Double = 10
     @State private var scaleY: Double = 10
+    @State private var showScale: Bool = false
     
     @State var selectedOperation = 1
     
@@ -19,8 +20,8 @@ struct ContentView: View {
             ("Cos", { (x: Double) in cos(x) }),
             ("Tan", { (x: Double) in tan(x) })],
         
-        2: [("Square", { (x: Double) in pow(x, 2) }),
-            ("Expo", { (x: Double) in pow(2.74, x) })],
+        2: [("xˆ2", { (x: Double) in pow(x, 2) }),
+            ("e^x", { (x: Double) in pow(2.74, x) })],
         
         3: [("Log10", { (x: Double) in log10(x) })]
     ]
@@ -55,7 +56,7 @@ struct ContentView: View {
                     }
                 }
             }
-            .padding()
+            
             .border(Color.gray)
             
             Picker("Selecione a operação", selection: $selectedOperation) {
@@ -90,22 +91,31 @@ struct ContentView: View {
             .buttonStyle(.borderedProminent)
             .padding()
             
-            HStack {
-                Text("ScaleX: \(Int(scaleX))")
-                Slider(value: $scaleX, in: 0...200, step: 10)
+            
+            if showScale{
+                HStack {
+                    Text("ScaleX: \(Int(scaleX))")
+                    Slider(value: $scaleX, in: 0...200, step: 10)
+                }
+                
+                HStack {
+                    Text("ScaleY: \(Int(scaleY))")
+                    Slider(value: $scaleY, in: 0...250, step: 10)
+                }
             }
             
-            HStack {
-                Text("ScaleY: \(Int(scaleY))")
-                Slider(value: $scaleY, in: 0...250, step: 10)
-            }
-            
-            Button("reset") {
-                selectedFunctions.removeAll()
-                selectedOperations.removeAll()
+            HStack{
+                Button("reset") {
+                    selectedFunctions.removeAll()
+                    selectedOperations.removeAll()
+                }.buttonStyle(.borderedProminent)
+                
+                Button("Show Scale"){
+                    showScale.toggle()
+                }
             }
         }
-        .padding()
+       
     }
     
     func composeFunction(x: Double) -> Double {

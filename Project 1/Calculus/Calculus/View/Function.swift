@@ -23,7 +23,7 @@ struct Function: Shape {
     func path(in rect: CGRect) -> Path {
         var path = Path()
                 
-        for x in stride(from: rect.minX, to: rect.maxX, by: 0.1) {
+        for x in stride(from: rect.minX, to: rect.maxX, by: 1) {
             
             let y = -function(normalize(x: x - rect.maxX/2, rect: rect) / scaleX) * scaleY  + rect.height/2
             
