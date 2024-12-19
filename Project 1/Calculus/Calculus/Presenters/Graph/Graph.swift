@@ -19,14 +19,14 @@ struct Graph: View {
                 vm.m.show.toggle()
             } label: {
                 Image(systemName: vm.m.show ? "chevron.down" : "chevron.up")
-            }.padding()
+            }.buttonStyle(.borderedProminent)
             
             
             Graph_C_Functions(vm: vm)
-                .padding()
+                .padding(.horizontal)
             
             Graph_C_Settings(vm: vm)
-                .padding()
+                .padding(.horizontal)
         }
     }
     
