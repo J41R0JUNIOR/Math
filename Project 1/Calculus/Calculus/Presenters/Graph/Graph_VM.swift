@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 @Observable
 class Graph_VM {
@@ -26,6 +27,7 @@ class Graph_VM {
                 case "-": result -= function(x)
                 case "*": result *= function(x)
                 case "/": result = function(x) != 0 ? result / function(x) : result
+                case "f(x)": result = function(result)
                 default: break
                 }
             }
@@ -48,4 +50,8 @@ class Graph_VM {
 //        return result
 //    }
 
+}
+
+#Preview {
+    Graph()
 }

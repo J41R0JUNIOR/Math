@@ -21,6 +21,7 @@ struct Graph: View {
                 Image(systemName: vm.m.show ? "chevron.down" : "chevron.up")
             }.padding()
             
+            
             Graph_C_Functions(vm: vm)
             
             Graph_C_Settings(vm: vm)

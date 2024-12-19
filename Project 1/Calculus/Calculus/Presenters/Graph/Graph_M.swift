@@ -51,5 +51,5 @@ class Graph_M{
         ]
     ]
     
-    let operations = ["+", "-", "*", "/"]
+    let operations = ["+", "-", "*", "/", "f(x)"]
 }
