@@ -9,12 +9,12 @@ import SwiftUI
 
 struct Graph_C_Settings: View {
     @Bindable var vm: Graph_VM
-
+    
     var body: some View {
-            HStack {
-                Text("Precision: \(String(format: "%.2f", Float(vm.m.by)))")
-                Slider(value: $vm.m.by, in: 0.01...1, step: 0.01)
-            }
+        HStack {
+            Text("Precision: \(String(format: "%.2f", Float(vm.m.by)))")
+            Slider(value: $vm.m.by, in: 0.01...1, step: 0.01)
+        }
         
         if vm.m.show{
             if vm.m.showScale{
