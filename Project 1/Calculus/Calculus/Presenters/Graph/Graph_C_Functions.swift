@@ -17,15 +17,12 @@ struct Graph_C_Functions: View {
                     HStack {
                         if !((index - 1) >= 0 && vm.m.selectedOperations[index - 1] == "f(x)") {
                             Text(vm.m.selectedFunctions[index].0)
-                                .padding(5)
-                                .background(Color.blue.opacity(0.3))
-                                .cornerRadius(5)
                         }
                         
                         if index < vm.m.selectedOperations.count {
                             let operation = vm.m.selectedOperations[index]
                             if operation == "f(x)", index + 1 < vm.m.selectedFunctions.count {
-                                Text("(\(vm.m.selectedFunctions[index + 1].0))")
+                                Text("(\(vm.m.selectedFunctions[index + 1].0)(x))")
                                     .font(.body.italic())
                                     .foregroundColor(.purple)
                             } else {
@@ -34,7 +31,7 @@ struct Graph_C_Functions: View {
                                     .foregroundColor(.gray)
                             }
                         }
-                    }
+                    }.padding(5)
                 }
             }
             .padding(.horizontal)
@@ -56,7 +53,11 @@ struct Graph_C_Functions: View {
                     if let functions = vm.m.functionsByCategory[vm.m.selectedOperation] {
                         ForEach(functions.indices, id: \.self) { index in
                             Button(action: {
-                                vm.m.selectedFunctions.append(functions[index])
+                                
+                                if (vm.m.selectedFunctions.count == vm.m.selectedOperations.count)  {
+                                    
+                                    vm.m.selectedFunctions.append(functions[index])
+                                }
                             }) {
                                 Text(functions[index].0)
                             }
