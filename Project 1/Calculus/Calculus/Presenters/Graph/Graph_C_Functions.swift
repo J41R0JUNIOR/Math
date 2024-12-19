@@ -55,7 +55,6 @@ struct Graph_C_Functions: View {
                             Button(action: {
                                 
                                 if (vm.m.selectedFunctions.count == vm.m.selectedOperations.count)  {
-                                    
                                     vm.m.selectedFunctions.append(functions[index])
                                 }
                             }) {
@@ -71,7 +70,9 @@ struct Graph_C_Functions: View {
                 Text("Operations:")
                 ForEach(vm.m.operations, id: \.self) { operation in
                     Button(operation) {
-                        vm.m.selectedOperations.append(operation)
+                        if (vm.m.selectedFunctions.count - 1 == vm.m.selectedOperations.count) {
+                            vm.m.selectedOperations.append(operation)
+                        }
                     }
                     .buttonStyle(.bordered)
                 }
