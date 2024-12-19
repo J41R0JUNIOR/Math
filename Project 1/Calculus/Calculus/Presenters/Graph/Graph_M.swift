@@ -23,12 +23,12 @@ class Graph_M{
     
     let functionsByCategory = [
         1: [
-            ("sin(x)", sin),
-            ("cos(x)", cos),
-            ("tan(x)", tan),
-            ("cot(x)", { 1 / tan($0) }),
-            ("csc(x)", { 1 / sin($0) }),
-            ("sec(x)", { 1 / cos($0) })
+            ("sin", sin),
+            ("cos", cos),
+            ("tan", tan),
+            ("cot", { 1 / tan($0) }),
+            ("csc", { 1 / sin($0) }),
+            ("sec", { 1 / cos($0) })
         ],
         
         2: [

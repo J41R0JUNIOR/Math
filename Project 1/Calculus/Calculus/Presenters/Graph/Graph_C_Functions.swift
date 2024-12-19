@@ -9,21 +9,35 @@ import SwiftUI
 
 struct Graph_C_Functions: View {
     @Bindable var vm: Graph_VM
-
+    
     var body: some View {
         ScrollView(.horizontal) {
-            HStack {
+            HStack(spacing: 10) {
                 ForEach(0..<vm.m.selectedFunctions.count, id: \.self) { index in
-                    Text(vm.m.selectedFunctions[index].0)
-                        .background(Color.blue.opacity(0.3))
-                        .cornerRadius(3)
-                    
-                    if index < vm.m.selectedOperations.count {
-                        Text(vm.m.selectedOperations[index])
-                            .font(.title2)
+                    HStack {
+                        if !((index - 1) >= 0 && vm.m.selectedOperations[index - 1] == "f(x)") {
+                            Text(vm.m.selectedFunctions[index].0)
+                                .padding(5)
+                                .background(Color.blue.opacity(0.3))
+                                .cornerRadius(5)
+                        }
+                        
+                        if index < vm.m.selectedOperations.count {
+                            let operation = vm.m.selectedOperations[index]
+                            if operation == "f(x)", index + 1 < vm.m.selectedFunctions.count {
+                                Text("(\(vm.m.selectedFunctions[index + 1].0))")
+                                    .font(.body.italic())
+                                    .foregroundColor(.purple)
+                            } else {
+                                Text(operation)
+                                    .font(.title2)
+                                    .foregroundColor(.gray)
+                            }
+                        }
                     }
                 }
             }
+            .padding(.horizontal)
         }
         .border(Color.gray)
         
