@@ -19,7 +19,7 @@ struct Graph: View {
                 vm.m.show.toggle()
             } label: {
                 Image(systemName: vm.m.show ? "chevron.down" : "chevron.up")
-            }.buttonStyle(.borderedProminent)
+            }.buttonStyle(.bordered)
             
             
             Graph_C_Functions(vm: vm)
