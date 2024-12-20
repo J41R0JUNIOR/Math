@@ -10,7 +10,7 @@ import SwiftUI
 struct Graph_C_Settings: View {
     @Bindable var vm: Graph_VM
     
-    var body: some View {
+    var body: some View {        
         HStack {
             Text("Precision: \(String(format: "%.2f", Float(vm.m.by)))")
             Slider(value: $vm.m.by, in: 0.01...1, step: 0.01)
@@ -18,7 +18,7 @@ struct Graph_C_Settings: View {
         
         if vm.m.show{
             if vm.m.showScale{
-                ScrollView{
+                List{
                     HStack {
                         Text("ScaleX: \(Int(vm.m.scaleX))")
                         Slider(value: $vm.m.scaleX, in: 5...200, step: 5)

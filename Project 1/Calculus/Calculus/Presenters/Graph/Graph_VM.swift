@@ -23,12 +23,19 @@ class Graph_VM {
             if i - 1 < m.selectedOperations.count {
                 let operation = m.selectedOperations[i - 1]
                 switch operation {
-                case "+": result += function(x)
-                case "-": result -= function(x)
-                case "*": result *= function(x)
-                case "/": result = function(x) != 0 ? result / function(x) : result
-                case "f(x)": result = function(result)
-                default: break
+                case "+":
+                    result += function(x)
+                case "-":
+                    result -= function(x)
+                case "*":
+                    result *= function(x)
+                case "/":
+                    let divisor = function(x)
+                    result = divisor != 0 ? result / divisor : 0 
+                case "f(x)":
+                    result = function(result)
+                default:
+                    break
                 }
             }
         }
@@ -36,6 +43,7 @@ class Graph_VM {
         return result
     }
 }
+
 
 #Preview {
     Graph()

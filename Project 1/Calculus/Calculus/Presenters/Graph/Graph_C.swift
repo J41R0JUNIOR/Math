@@ -18,6 +18,8 @@ struct Graph_C: View {
             Function(
                 function: { x in
                     vm.composeFunction(x: x)
+//                    let t = tan(x)
+//                    return cos(t)
                 },
                 scaleX: vm.m.scaleX,
                 scaleY: vm.m.scaleY,
