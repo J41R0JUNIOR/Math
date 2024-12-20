@@ -45,6 +45,10 @@ struct Graph_C_Settings: View {
                 Button("reset") {
                     vm.m.selectedFunctions.removeAll()
                     vm.m.selectedOperations.removeAll()
+                    vm.m.displacementX = .zero
+                    vm.m.displacementY = .zero
+                    vm.m.scaleX = .zero
+                    vm.m.scaleY = .zero
                 }.buttonStyle(.borderedProminent)
                 
                 Button("Show Scale"){
