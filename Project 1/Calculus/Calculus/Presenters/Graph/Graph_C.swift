@@ -21,6 +21,8 @@ struct Graph_C: View {
                 },
                 scaleX: vm.m.scaleX,
                 scaleY: vm.m.scaleY,
+                displaceX: vm.m.displacementX,
+                displaceY: vm.m.displacementY,
                 spacedBetweenPoints: vm.m.by
             )
             .stroke(Color.blue, lineWidth: 2)

@@ -18,14 +18,26 @@ struct Graph_C_Settings: View {
         
         if vm.m.show{
             if vm.m.showScale{
-                HStack {
-                    Text("ScaleX: \(Int(vm.m.scaleX))")
-                    Slider(value: $vm.m.scaleX, in: 5...200, step: 5)
-                }
-                
-                HStack {
-                    Text("ScaleY: \(Int(vm.m.scaleY))")
-                    Slider(value: $vm.m.scaleY, in: 5...200, step: 5)
+                ScrollView{
+                    HStack {
+                        Text("ScaleX: \(Int(vm.m.scaleX))")
+                        Slider(value: $vm.m.scaleX, in: 5...200, step: 5)
+                    }
+                    
+                    HStack {
+                        Text("ScaleY: \(Int(vm.m.scaleY))")
+                        Slider(value: $vm.m.scaleY, in: 5...200, step: 5)
+                    }
+                    
+                    HStack {
+                        Text("DisplacementX: \(Int(vm.m.displacementX))")
+                        Slider(value: $vm.m.displacementX, in: -100...100, step: 5)
+                    }
+                    
+                    HStack {
+                        Text("DisplacementY: \(Int(vm.m.displacementY))")
+                        Slider(value: $vm.m.displacementY, in: -100...100, step: 5)
+                    }
                 }
             }
             

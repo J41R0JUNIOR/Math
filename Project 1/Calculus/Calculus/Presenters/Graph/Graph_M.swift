@@ -16,6 +16,8 @@ class Graph_M{
     var selectedOperations: [String] = []
     var scaleX: Double = 10
     var scaleY: Double = 10
+    var displacementX: Double = 0
+    var displacementY: Double = 0
     var showScale: Bool = false
     var by: Double = 0.1
     var selectedOperation = 1
