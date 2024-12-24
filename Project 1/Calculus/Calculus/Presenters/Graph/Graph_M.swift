@@ -25,9 +25,9 @@ class Graph_M {
     
     let functionsByCategory: [Int: [(String, (Double) -> Double)]] = [
         1: [
-            ("sin", sin),
-            ("cos", cos),
-            ("tan", tan),
+            ("sin", { sin($0) }),
+            ("cos", { cos($0) }),
+            ("tan", { tan($0) }),
             ("cot", { 1 / tan($0) }),
             ("csc", { 1 / sin($0) }),
             ("sec", { 1 / cos($0) })

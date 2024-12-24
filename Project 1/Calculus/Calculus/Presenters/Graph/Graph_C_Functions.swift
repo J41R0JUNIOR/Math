@@ -42,7 +42,7 @@ struct Graph_C_Functions: View {
             
             Picker("Selecione a operação", selection: $vm.m.selectedOperation) {
                 Image(systemName: "circle").tag(1)
-                Text("ˆ").tag(2)
+                Text("U").tag(2)
                 Text("/").tag(3)
                 Text("Log").tag(4)
             }
