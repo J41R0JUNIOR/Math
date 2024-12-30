@@ -16,7 +16,7 @@ struct Graph_C_Functions: View {
                 ForEach(0..<vm.m.selectedFunctions.count, id: \.self) { index in
                     HStack {
                         if !((index - 1) >= 0 && vm.m.selectedOperations[index - 1] == "f(x)") {
-                            Text(vm.m.selectedFunctions[index].0)
+                            Text("\(vm.m.selectedFunctions[index].0)(x)")
                         }
                         
                         if index < vm.m.selectedOperations.count {
@@ -29,6 +29,8 @@ struct Graph_C_Functions: View {
                                 Text(operation)
                                     .font(.title2)
                                     .foregroundColor(.gray)
+                              
+                                
                             }
                         }
                     }.padding(5)

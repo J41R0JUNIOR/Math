@@ -16,11 +16,7 @@ struct Graph_C: View {
                 .stroke(Color.primary, lineWidth: 1)
             
             Function(
-                function: { x in
-                    vm.composeFunction(x: x)
-//                    let t = tan(x)
-//                    return cos(t)
-                },
+                function: { x in vm.composeFunction(x: x)},
                 scaleX: vm.m.scaleX,
                 scaleY: vm.m.scaleY,
                 displaceX: vm.m.displacementX,
@@ -29,6 +25,19 @@ struct Graph_C: View {
             )
             .stroke(Color.blue, lineWidth: 2)
             .id(vm.m.selectedFunctions.count + vm.m.selectedOperations.count)
+            
+            if true {
+                Area(function: { x in vm.composeFunction(x: x)},
+                     scaleX: vm.m.scaleX,
+                     scaleY: vm.m.scaleY,
+                     displaceX: vm.m.displacementX,
+                     displaceY: vm.m.displacementY,
+                     spacedBetweenPoints: vm.m.by,
+                     qtdRectangles: Int(vm.m.qtdRectangle)
+                )
+                .stroke(Color.red, lineWidth: 2)
+                .id(vm.m.selectedFunctions.count + vm.m.selectedOperations.count)
+            }
         }
 //        .border(Color.black)
         

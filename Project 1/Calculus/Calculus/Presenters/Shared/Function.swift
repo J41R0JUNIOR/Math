@@ -10,10 +10,10 @@ import SwiftUI
 
 struct Function: Shape {
     var function: @Sendable (_ x: Double) -> (Double)
-    var scaleX: Double = 1
-    var scaleY: Double = 10
-    var displaceX: Double = 0
-    var displaceY: Double = 0
+    var scaleX: Double 
+    var scaleY: Double
+    var displaceX: Double
+    var displaceY: Double
     var spacingBetweenPoints: Double
     
     init(function: @Sendable @escaping (_ x: Double) -> Double, scaleX: Double, scaleY: Double, displaceX: Double = 0, displaceY: Double = 0, spacedBetweenPoints: Double = 0.1) {
@@ -34,7 +34,7 @@ struct Function: Shape {
             
             if y > rect.minY/2 && y < rect.maxY{
                 path.move(to: CGPoint(x: x, y: y))
-                path.addLine(to: CGPoint(x: x - 1, y: y ))
+                path.addLine(to: CGPoint(x: x - 0.5, y: y ))
             }
         }
         

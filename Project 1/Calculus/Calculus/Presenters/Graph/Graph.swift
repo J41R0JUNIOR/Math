@@ -27,6 +27,7 @@ struct Graph: View {
             
             Graph_C_Settings(vm: vm)
                 .padding(.horizontal)
+            
         }
     }
     

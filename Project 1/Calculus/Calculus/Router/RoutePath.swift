@@ -13,8 +13,9 @@ public struct RoutePath: Hashable {
         case .content:
             ContentView().navigationBarBackButtonHidden()
 
-        case .setting:
-            Setting().navigationBarBackButtonHidden()
+        case .graph:
+            Graph()
+            
         }
     }
 }

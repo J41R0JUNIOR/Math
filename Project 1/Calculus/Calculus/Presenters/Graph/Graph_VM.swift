@@ -12,6 +12,8 @@ import SwiftUI
 class Graph_VM {
     var m = Graph_M()
     
+   
+    
     func composeFunction(x: Double) -> Double {
         guard !m.selectedFunctions.isEmpty else { return 0 }
         

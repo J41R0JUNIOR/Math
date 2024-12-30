@@ -10,11 +10,21 @@ import SwiftUI
 struct Graph_C_Settings: View {
     @Bindable var vm: Graph_VM
     
-    var body: some View {        
-        HStack {
-            Text("Precision: \(String(format: "%.2f", Float(vm.m.by)))")
-            Slider(value: $vm.m.by, in: 0.01...1, step: 0.01)
+    var body: some View {
+        VStack{
+            HStack {
+                Text("Precision: \(String(format: "%.2f", Float(vm.m.by)))")
+                Slider(value: $vm.m.by, in: 0.01...1, step: 0.01)
+            }
+            
+            HStack {
+                Text("Qtd Rectangles: \(String(format: "%.2f", Float(vm.m.qtdRectangle)))")
+                Slider(value: $vm.m.qtdRectangle, in: 5...100, step: 1)
+                
+            }
+//            Text("Area: \(String(format: "%.2f", Float(vm.m.area)))")
         }
+        
         
         if vm.m.show{
             if vm.m.showScale{

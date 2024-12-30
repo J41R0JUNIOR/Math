@@ -2,7 +2,7 @@ import Foundation
 
 enum Routes { 
     case content
-    case setting
+    case graph
 }
 
 extension Routes: Equatable, Hashable {
