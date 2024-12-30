@@ -40,43 +40,37 @@ struct Area: Shape {
             let y = -function((x - rect.maxX/2 + displaceX) / scaleX) * scaleY  + rect.height/2 + displaceY
             
             if y > rect.minY/2 && y < rect.maxY{
+                
+                let newY = y < rect.midY ? y : rect.midY
+                
                 if path.isEmpty {
-                    
-                    path.move(to: CGPoint(x: x, y: y))
+                    path.move(to: CGPoint(x: x, y: newY))
                 }
                 
-                if y < rect.midY {
-                    path.addLine(to: CGPoint(x: x, y: y))
-                    path.addLine(to: CGPoint(x: x + width, y: y))
-                    path.addLine(to: CGPoint(x: x + width, y: rect.midY))
-                }
-                else{
-                    path.addLine(to: CGPoint(x: x, y: rect.midY))
-                    path.addLine(to: CGPoint(x: x + width, y: rect.midY))
-                    path.addLine(to: CGPoint(x: x + width, y: rect.midY))
-                }
-                
+                path.addLine(to: CGPoint(x: x, y: newY))
+                path.addLine(to: CGPoint(x: x + width, y: newY))
+                path.addLine(to: CGPoint(x: x + width, y: rect.midY))
             }
         }
         
         return path
     }
     
-//    func calculateArea(in rect: CGRect) -> Double {
-//        let width = rect.width / Double(self.qtdRectangles)
-//        var totalArea: Double = 0
-//
-//        for x in stride(from: rect.minX, to: rect.maxX, by: width) {
-//            let y = -function((x - rect.maxX / 2 + displaceX) / scaleX) * scaleY + rect.height / 2 + displaceY
-//
-//            if y > rect.minY / 2 && y < rect.maxY {
-//               
-//                totalArea += width * (rect.midY - y)
-//            }
-//        }
-//
-//        return totalArea
-//    }
+    //    func calculateArea(in rect: CGRect) -> Double {
+    //        let width = rect.width / Double(self.qtdRectangles)
+    //        var totalArea: Double = 0
+    //
+    //        for x in stride(from: rect.minX, to: rect.maxX, by: width) {
+    //            let y = -function((x - rect.maxX / 2 + displaceX) / scaleX) * scaleY + rect.height / 2 + displaceY
+    //
+    //            if y > rect.minY / 2 && y < rect.maxY {
+    //
+    //                totalArea += width * (rect.midY - y)
+    //            }
+    //        }
+    //
+    //        return totalArea
+    //    }
 }
 
 #Preview {
