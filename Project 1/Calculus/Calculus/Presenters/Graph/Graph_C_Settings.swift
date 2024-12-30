@@ -19,10 +19,10 @@ struct Graph_C_Settings: View {
             
             HStack {
                 Text("Qtd Rectangles: \(String(format: "%.2f", Float(vm.m.qtdRectangle)))")
-                Slider(value: $vm.m.qtdRectangle, in: 5...100, step: 1)
+                Slider(value: $vm.m.qtdRectangle, in: 5...200, step: 1)
                 
             }
-//            Text("Area: \(String(format: "%.2f", Float(vm.m.area)))")
+            Toggle("Show Area", isOn: $vm.m.showArea).padding()
         }
         
         

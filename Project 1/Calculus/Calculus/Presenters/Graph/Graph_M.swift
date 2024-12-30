@@ -23,6 +23,7 @@ class Graph_M {
     var selectedOperation = 1
     var show = true
     var qtdRectangle: Float = 10
+    var showArea = false
     
     let functionsByCategory: [Int: [(String, (Double) -> Double)]] = [
         1: [

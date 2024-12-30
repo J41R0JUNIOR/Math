@@ -15,7 +15,6 @@ struct Area: Shape {
     var displaceX: Double
     var displaceY: Double
     var spacingBetweenPoints: Double
-    
     var qtdRectangles: Int
     var area: Double = 0
     
@@ -43,13 +42,12 @@ struct Area: Shape {
                 
                 let newY = y < rect.midY ? y : rect.midY
                 
-                if path.isEmpty {
-                    path.move(to: CGPoint(x: x, y: newY))
-                }
+                path.move(to: CGPoint(x: x, y: rect.midY))
                 
                 path.addLine(to: CGPoint(x: x, y: newY))
                 path.addLine(to: CGPoint(x: x + width, y: newY))
                 path.addLine(to: CGPoint(x: x + width, y: rect.midY))
+                path.addLine(to: CGPoint(x: x, y: rect.midY))
             }
         }
         
@@ -74,5 +72,5 @@ struct Area: Shape {
 }
 
 #Preview {
-    Area(function:  {sin($0)}, scaleX: 10, scaleY: 50, qtdRectangles: 10).stroke(Color.blue, lineWidth: 2)
+    Area(function:  {sin($0)}, scaleX: 100, scaleY: 400, displaceX: 150, qtdRectangles: 20).stroke(Color.blue, lineWidth: 1)
 }

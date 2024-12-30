@@ -9,7 +9,7 @@ import SwiftUI
 
 struct Graph_C: View {
     @Bindable var vm: Graph_VM
-
+    
     var body: some View {
         ZStack {
             Mesh()
@@ -26,7 +26,7 @@ struct Graph_C: View {
             .stroke(Color.blue, lineWidth: 2)
             .id(vm.m.selectedFunctions.count + vm.m.selectedOperations.count)
             
-            if true {
+            if vm.m.showArea{
                 Area(function: { x in vm.composeFunction(x: x)},
                      scaleX: vm.m.scaleX,
                      scaleY: vm.m.scaleY,
@@ -39,8 +39,6 @@ struct Graph_C: View {
                 .id(vm.m.selectedFunctions.count + vm.m.selectedOperations.count)
             }
         }
-//        .border(Color.black)
-        
     }
 }
 
