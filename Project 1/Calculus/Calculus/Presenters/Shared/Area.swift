@@ -38,39 +38,22 @@ struct Area: Shape {
             
             let y = -function((x - rect.maxX/2 + displaceX) / scaleX) * scaleY  + rect.height/2 + displaceY
             
-            if y > rect.minY/2 && y < rect.maxY{
-                
-                let newY = y < rect.midY ? y : rect.midY
-                
-                path.move(to: CGPoint(x: x, y: rect.midY))
-                
-                path.addLine(to: CGPoint(x: x, y: newY))
-                path.addLine(to: CGPoint(x: x + width, y: newY))
-                path.addLine(to: CGPoint(x: x + width, y: rect.midY))
-                path.addLine(to: CGPoint(x: x, y: rect.midY))
-            }
+            let newY = y < rect.midY ? y : rect.midY
+            
+            path.move(to: CGPoint(x: x, y: rect.midY))
+            
+            path.addLine(to: CGPoint(x: x, y: newY))
+            path.addLine(to: CGPoint(x: x + width, y: newY))
+            path.addLine(to: CGPoint(x: x + width, y: rect.midY))
+            path.addLine(to: CGPoint(x: x, y: rect.midY))
         }
         
         return path
     }
-    
-    //    func calculateArea(in rect: CGRect) -> Double {
-    //        let width = rect.width / Double(self.qtdRectangles)
-    //        var totalArea: Double = 0
-    //
-    //        for x in stride(from: rect.minX, to: rect.maxX, by: width) {
-    //            let y = -function((x - rect.maxX / 2 + displaceX) / scaleX) * scaleY + rect.height / 2 + displaceY
-    //
-    //            if y > rect.minY / 2 && y < rect.maxY {
-    //
-    //                totalArea += width * (rect.midY - y)
-    //            }
-    //        }
-    //
-    //        return totalArea
-    //    }
+ 
 }
 
 #Preview {
     Area(function:  {sin($0)}, scaleX: 100, scaleY: 400, displaceX: 150, qtdRectangles: 20).stroke(Color.blue, lineWidth: 1)
 }
+
